@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSC 436 Homework 2</title>
+</head>
+
+<body>
+<h2>CSC 436 Assignment 2</h2>
+<h2>Jay Pan</h2>
+    <div class="root-container">
+        <div class="header">
+
+            <p id="reverse"></p>
+            <p id="remove-symbols-numbers"></p>
+            <p id="sort-alphabetically"></p>
+            <p id="toggle-color"></p>
+            <p id="random-color"></p>
+            <p id="convert-to-inline"></p>
+
+            <button onclick="reverseList()">
+                REVERSE
+            </button>
+            
+            <button onclick="removeNumbers()"> 
+                REMOVE SYMBOLS & NUMBERS
+            </button>
+
+            <button onclick="sortAlphabetically()"> 
+                SORT ALPHABETICALLLY
+            </button>
+
+            <button onclick="toggleColor()"> 
+                TOGGLE COLOR
+            </button>
+
+            <button onclick="randomColor()"> 
+                RANDOM COLOR
+            </button>
+
+            <button onclick="convertInline()">
+                CONVERT TO INLINE
+            </button>
+        </div>
+        <div class="main">
+            <div class="startups-container" id = "container">
+
+            </div>
+
+        </div>
+        <div class="footer">
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<style>
+    .root-container 
+    {
+        position: relative;
+    }
+
+    .root-container .header 
+    {
+        position: relative;
+    }
+
+    .root-container .main 
+    {
+        position: relative;
+    }
+
+    .root-container .footer 
+    {
+        position: relative;
+    }
+
+    .startups-container 
+    {
+        background-color: gray;
+    }
+
+    .red 
+    {
+        background-image: red;
+    }
+
+    .blue 
+    {
+        background-image: blue;
+    }
+
+    .gold 
+    {
+        background-image: gold;
+    }
+    .startups-toggle 
+    {
+        background-color: blue;
+    }
+    .display-inline 
+    {
+        display: inline;
+    }
+</style>
+
+<script type="text/javascript">
+    var colors = ['red', 'blue', 'gold'];
+    var chicagoStartupsHTML = [];
+    var chicagoStartups = 
+    [
+        '  Interior   Define  ',
+        'Classkick',
+        'teaBOT  .$',
+        'Pritzker Group Venture Capital',
+        'Teln!yx !!',
+        'ShipBob ~~$$$',
+        'Hologram',
+        'Tovala    ',
+        '    MANOR',
+        'ShuttleCloud 999987',
+        'gtrot @@@@@',
+        'DealsGoRound ****',
+        ' Groovebug',
+        'Stage$$$Bloc',
+        'Shiftgig',
+        'ParkWhiz'
+    ];
+    
+
+    //HOMEWORK 1 PROBLEMS START
+    // 1.CREATE A FUNCTION THAT REVERSES THE LIST OF STARTUPS ON CLICK OF THE REVERSE BUTTON
+    function reverseList()
+    {
+       document.getElementById("container").innerHTML="";   
+       document.querySelector(".startups-container").innerHTML ='<div>' + chicagoStartups.reverse().join('</div><div>') + '</div>';
+    }
+    
+    // 2.CREATE A FUNCTION THAT REMOVES ALL SYMBOLS AND NUMBERS FROM COMPANY NAMES ON CLICK OF REMOVE SYMBOLS & NUMBERS BUTTON 
+    //   Stage$$$Bloc => StageBloc
+    function removeNumbers()
+    {
+        var tmp = document.getElementById('container');
+        var tmp2 = tmp.getElementsByTagName('div');
+        for (var i = 0; i < tmp2.length; i += 1) 
+        {
+            tmp2[i].innerHTML = tmp2[i].innerText.replace(/[^a-zA-Z]/g,'');
+        }
+    }
+
+    // 3.CREATE A FUNCTION THAT SORTS STARTUPS IN ALPHABETICAL ORDER ON CLICK OF THE SORT BUTTON
+    function sortAlphabetically()
+    {
+        chicagoStartups.sort(function(a,b){
+        var nameA = a.toUpperCase().trim();
+        var nameB = b.toUpperCase().trim();
+        if (nameA < nameB) 
+        {
+           return -1;
+        }
+        if (nameA > nameB) 
+        {
+           return 1;
+        }
+          // names must be equal
+          return 0;
+        });  
+        document.querySelector(".startups-container").innerHTML = chicagoStartups.join('</div><div>') + '</div>';
+    }
+
+    // 4.CREATE A FUNCTION THAT TOGGLES THE BACKGROUND COLOR UPON CLICK OF THE TOGGLE COLOR BUTTON
+    //var button = document.body.style.background = "blue";
+
+    function toggleColor()
+    {
+        var tmp = document.getElementById('container');
+        tmp.classList.toggle("startups-toggle")     
+        document.querySelector(".startups-container").innerHTML = chicagoStartups.join('</div><div>') + '</div>';
+    }
+
+    // 5.CREATE A FUNCTION THAT RANDOMLY SELECTS A COLOR CLASS AND APPLIES IT TO EACH COMPANY NAME WHEN THE COLOR BUTTON IS CLICKED
+    function randomColor()
+    {
+        var tmp = document.getElementById('container');
+        var tmp2 = tmp.getElementsByTagName('div');
+        for (var i = 0; i < tmp2.length; i += 1) 
+        {
+            tmp2[i].style.color = rndColor();
+        }
+    }
+
+    function rndColor() 
+    {
+        var c1 =  Math.floor(Math.random() * 255); 
+        var c2 =  Math.floor(Math.random() * 255); 
+        var c3 =  Math.floor(Math.random() * 255); 
+        var color = "rgb(" + c1 +","+ c2 +","+ c3 +")";
+        return(color);
+    }   
+    // 6.CREATE A FUNCTION THAT DISPLAYS STARTS AS INLINE ELEMENTS ON CLICK OF CONVERT TO INLINE BUTTON
+    
+    function convertInline() 
+    {
+        var tmp = document.getElementById('container');
+        var tmp2 = tmp.getElementsByTagName('div');
+        for (var i = 0; i < tmp2.length; i += 1) 
+		{
+            tmp2[i].classList.toggle("display-inline");
+        }
+    }
+
+    //HOMEWORK 1 PROBLEMS END
+</script>
