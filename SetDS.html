@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Set Data Structure</title>
+	<script type="text/javascript" src="set.js"></script>
+</head>
+<body>
+<h1>CSC 436 Web Applications Homework 2</h1>
+<h1>Jay Pan</h1>
+<h2>This is an implementation of the Set Data Structure using JavaScript</h2>
+<h2>Implementation was modified from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set</a></h2>
+<h2>Look in the console to see the output. </h2>
+
+<h3>I implemented the Set as follows: </h3>
+<ul>
+	<li>var set = new Set();</li>
+	<li>set.add(1);</li>
+	<li>set.add(10);</li>
+	<li>set.add("here is some text");</li>
+	<li>var o = {a: 1, b: 2};</li>
+	<li>set.add(o);</li>
+</ul>
+
+<h4>Following which, there are a bunch of tests to see whether the Set contains certain elements.</h4>
+<ul>
+	<li>set.has(1); This will return true. </li>
+	<li>set.has(3); This will return false. </li>
+	<li>set.has(10); This will return true. </li>
+	<li>set.has(Math.sqrt(100)); This will return true as well.</li>
+	<li>set.has("Here is some text".toLowerCase()); This will also return true. </li>
+	<li>set.has(o); This will return true. </li>
+	<li>set.size; This will return 4. </li>
+</ul>
+
+<h4>Another element is removed as follows:</h4>
+<ul>
+	<li>set.delete(10); This will delete the element 10 from the Set</li>
+</ul>
+
+<h4>Followed by the final 2 tests</h4>
+<ul>
+	<li>set.has(10); This will return false.</li>
+	<li>set.size; This will return 3.</li>
+</ul>
+</body>
+</html>
